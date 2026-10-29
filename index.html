@@ -4,22 +4,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hi Hinodi 💗</title>
+<title>SORRY HINODEE 💗</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 :root{
   --pink:#ff80bd;
   --light:#ffe4f2;
-  --deep:#270d2d;
+}
+
+html{
+  min-height:100%;
+  background:#150a20;
 }
 
 body{
   min-height:100vh;
+  min-height:100dvh;
   background:radial-gradient(ellipse at top,#692653 0%,#321333 48%,#150a20 100%);
   color:#fff4fb;
-  font-family:Georgia,'Times New Roman',serif;
+  font-family:Georgia,"Times New Roman",serif;
   text-align:center;
   overflow-x:hidden;
 }
@@ -45,16 +54,30 @@ body{
   100%{transform:translateY(-115vh) rotate(320deg) scale(1.25);opacity:0}
 }
 
+/* Main layout: centers short screens and allows long screens to scroll */
 main{
   position:relative;
   z-index:1;
   width:min(92%,720px);
-  margin:auto;
-  padding:35px 0 55px;
+  min-height:100vh;
+  min-height:100dvh;
+  margin:0 auto;
+  padding:25px 0 35px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.screen{display:none;animation:appear .75s ease}
-.screen.active{display:block}
+.screen{
+  display:none;
+  width:100%;
+  margin:auto 0;
+  animation:appear .75s ease;
+}
+
+.screen.active{
+  display:block;
+}
 
 @keyframes appear{
   from{opacity:0;transform:translateY(15px)}
@@ -112,7 +135,6 @@ button{
 
 button:active{transform:scale(.96)}
 button:focus-visible{outline:3px solid white;outline-offset:3px}
-
 .small{font-size:14px;color:#ffdbed}
 
 /* Envelope */
@@ -201,7 +223,7 @@ button:focus-visible{outline:3px solid white;outline-offset:3px}
   font-size:16px;
 }
 
-/* Photos: show complete image without cropping */
+/* Photos are displayed fully, without forced cropping */
 .gallery{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -266,8 +288,15 @@ button:focus-visible{outline:3px solid white;outline-offset:3px}
   box-shadow:0 0 28px #ff8fc9aa;
 }
 
-.magic-letter.show{display:block;animation:paperIn .9s ease}
-.magic-letter p{white-space:pre-wrap;line-height:2}
+.magic-letter.show{
+  display:block;
+  animation:paperIn .9s ease;
+}
+
+.magic-letter p{
+  white-space:pre-wrap;
+  line-height:2;
+}
 
 /* Forgiveness buttons */
 .buttons{
@@ -278,7 +307,7 @@ button:focus-visible{outline:3px solid white;outline-offset:3px}
 
 #noBtn{position:relative;transition:left .18s,top .18s}
 
-/* Final photo: cheek-kiss photo is photo3.png */
+/* Final cheek-kiss photo */
 .final-photo{
   display:block;
   width:100%;
@@ -306,13 +335,18 @@ footer{
 }
 
 @media(max-width:450px){
-  main{padding-top:25px}
+  main{padding:20px 0 28px}
   .card{padding:21px 13px}
   .gallery{gap:8px}
   .photo{padding:5px}
   .photo img{max-height:390px}
   .letter-text,.magic-letter p{font-size:15px}
   .envelope{height:190px}
+}
+
+/* On short phone screens, avoid squeezing long content */
+@media(max-height:700px){
+  main{justify-content:flex-start}
 }
 </style>
 </head>
@@ -321,7 +355,6 @@ footer{
 
 <div id="hearts"></div>
 
-<!-- Music starts from the beginning after the first Continue tap -->
 <audio id="song" loop preload="auto">
   <source src="song.m4a" type="audio/mp4">
 </audio>
@@ -347,7 +380,7 @@ footer{
     </div>
   </section>
 
-  <!-- SCREEN 2: OPENING ENVELOPE -->
+  <!-- SCREEN 2: ENVELOPE AND FIRST LETTER -->
   <section class="screen" id="letterScreen">
     <h2>A letter, just for you 💌</h2>
     <p class="subtitle">Tap the envelope to open it…</p>
@@ -362,7 +395,10 @@ footer{
     <div class="paper" id="firstLetter">
       <h2 style="text-align:center;color:#c43c81">My apology 💌</h2>
 
-      <div class="letter-text">I am sorry hino...i did hurtt u a lot..i should havee supportedd you yesterday..but it was never my intention to hurt u baby...i was not talking to anyonee sincee that dayy i textedd u in dc...i havee myy own problemss at home..which i don't likee to discuss...that's whyy i leftt for some time...but couldn't love without u all..i knoww u have many problemss in yourr life..but please don't say that i left you...causee i never did and never will...and i am sorry for yesterday's behavior i should had acted mature..and should have looked after u....i am really sorry for that...i won't do it ever again..pls trust me..i knoww it's difficult to..but please...plss tell me abt bhawani di also i am really unawaree of it..plss give mee a last chancee..i am not acting please i do caree for u a lot baby...love you so much...and if there is smth else i did plss let me know...i won't repeat my mistake..</div>
+      <div class="letter-text">I am sorry hino...i did hurtt u a lot..i should havee supportedd you yesterday..but it was never my intention to hurt u baby...i was not talking to anyonee sincee that dayy i textedd u in dc...i havee myy own problemss at home..which i don't likee to discuss...that's whyy i leftt for some time...but couldn't love without u all..i knoww u have many problemss in yourr life..but please don't say that i left you...causee i never did and never will...and i am sorry for yesterday's behavior i should had acted mature..and should have looked after u....i am really sorry for that...i won't do it ever again..pls trust me..i knoww it's difficult to..but please...plss tell me abt bhawani di also i am really unawaree of it..plss give mee a last chancee..i am not acting please i do caree for u a lot baby...love you so much...and if there is smth else i did plss let me know...i won't repeat my mistake..
+
+At lastt......
+What i am supposed to do with the whole garden when my favourite flower is not there?🙃</div>
 
       <p style="text-align:center;font-weight:bold;margin-top:20px">
         With love 💗
@@ -377,37 +413,34 @@ footer{
   <!-- SCREEN 3: MEMORIES -->
   <section class="screen" id="memories">
     <h2>Our memories 🌷💗</h2>
+    <p class="subtitle">I hope we get to make so many more together.</p>
 
-    <p class="subtitle">
-      I hope we get to make so many more together.
-    </p>
-
-    <!-- The cheek-kiss photo, photo3.png, is deliberately excluded here -->
     <div class="gallery">
       <div class="photo">
         <img src="photo1.png" alt="Memory one">
       </div>
+
       <div class="photo">
         <img src="photo2.png" alt="Memory two">
       </div>
+
       <div class="photo">
         <img src="photo4.png" alt="Memory four">
       </div>
+
       <div class="photo">
         <img src="photo5.png" alt="Memory five">
       </div>
     </div>
 
     <div class="card">
-      <p class="memory-message">I thought that when wee will grow up we will meet andd makee fun memories like this..but u are saying that u will leavee me...pleasee don't do that..hino i love you so much..pleasee🫠🫠💞</p>
+      <p class="memory-message">i thought that when wee will grow up we will meet anddmakee fun memories like this..but u are saying that u will leavee me...pleasee don't do that..hino i love you so much..pleasee🫠🫠💞</p>
 
-      <button onclick="showScreen('heartScreen')">
-        Continue 💗
-      </button>
+      <button onclick="showScreen('heartScreen')">Continue 💗</button>
     </div>
   </section>
 
-  <!-- SCREEN 4: BEATING HEART AND MAGICAL LETTER -->
+  <!-- SCREEN 4: HEART AND SECOND LETTER -->
   <section class="screen" id="heartScreen">
     <h2>A little piece of my heart 💗</h2>
     <p class="subtitle">Tap the glowing heart…</p>
@@ -417,21 +450,17 @@ footer{
       onclick="openMagicLetter()">💗</button>
 
     <div class="magic-letter" id="magicLetter">
-      <h2 style="text-align:center">
-        Please listen to my heart… ✨
-      </h2>
+      <h2 style="text-align:center">Please listen to my heart… ✨</h2>
 
       <p>hino i know you are reallyy hurt but trustt me i never fakee my friendship..i can just stop u ask u to be with me..but at last i would say that itss your life..if you are happy without me..then i am also fine with it..if it makess u happy nothing matters to me more than that again i am not acting babyy i reallyy do love you..😞❤️</p>
 
       <div style="text-align:center;margin-top:20px">
-        <button onclick="showScreen('forgive')">
-          Continue 🥺💞
-        </button>
+        <button onclick="showScreen('forgive')">Continue 🥺💞</button>
       </div>
     </div>
   </section>
 
-  <!-- SCREEN 5: DID YOU FORGIVE ME? -->
+  <!-- SCREEN 5: FORGIVENESS -->
   <section class="screen" id="forgive">
     <h2>Did you forgive me? 🥺💗</h2>
 
@@ -445,25 +474,21 @@ footer{
     </div>
   </section>
 
-  <!-- SCREEN 6: FINAL YES SURPRISE -->
+  <!-- SCREEN 6: YES SURPRISE -->
   <section class="screen" id="ending">
     <h1>THANKYOU BABYYY 💗</h1>
 
     <div class="card">
       <p class="final-message">Love u babyy 💋💞</p>
 
-      <p class="subtitle">
-        Thankyou for giving me another chance. ❤️
-      </p>
+      <p class="subtitle">Thankyou for giving me another chance. ❤️</p>
 
-      <!-- Correct cheek-kiss image: photo3.png -->
+      <!-- photo3.png is reserved for this final surprise -->
       <img class="final-photo"
         src="photo3.png"
         alt="Our cheek kiss picture">
 
-      <p class="final-message">
-        I won't repeat my mistake. 💗🌸
-      </p>
+      <p class="final-message">I won't repeat my mistake. 💗🌸</p>
 
       <p style="font-size:30px;margin-top:15px">
         🌸 💗 🌷 💋 💖 🌸
@@ -472,10 +497,11 @@ footer{
   </section>
 
   <footer>Made with love 💗</footer>
+
 </main>
 
 <script>
-const song = document.getElementById('song');
+const song=document.getElementById('song');
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(screen=>{
@@ -488,20 +514,18 @@ function showScreen(id){
 }
 
 function begin(){
-  // Restart from the very beginning on the first user tap.
-  song.currentTime = 0;
+  song.currentTime=0;
 
   song.play().catch(()=>{
-    // If the browser blocks playback, expose the audio controls.
-    song.controls = true;
+    song.controls=true;
   });
 
   showScreen('letterScreen');
 }
 
 function openLetter(){
-  const envelope = document.getElementById('envelope');
-  const paper = document.getElementById('firstLetter');
+  const envelope=document.getElementById('envelope');
+  const paper=document.getElementById('firstLetter');
 
   if(paper.classList.contains('show')) return;
 
@@ -514,21 +538,17 @@ function openLetter(){
 }
 
 function openMagicLetter(){
-  const letter = document.getElementById('magicLetter');
+  const letter=document.getElementById('magicLetter');
   letter.classList.add('show');
-
-  letter.scrollIntoView({
-    behavior:'smooth',
-    block:'center'
-  });
+  letter.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 function moveNo(){
-  const btn = document.getElementById('noBtn');
-  const area = document.getElementById('answerArea');
+  const btn=document.getElementById('noBtn');
+  const area=document.getElementById('answerArea');
 
-  const maxX = Math.max(0,area.clientWidth-btn.offsetWidth);
-  const maxY = 45;
+  const maxX=Math.max(0,area.clientWidth-btn.offsetWidth);
+  const maxY=45;
 
   btn.style.position='absolute';
   btn.style.left=Math.random()*maxX+'px';
@@ -540,16 +560,13 @@ function sayYes(){
   showerFlowers();
 }
 
-const particles = document.getElementById('hearts');
-const symbols = ['💗','💕','❤️','💖','💞','🌸','🌷','💋'];
+const particles=document.getElementById('hearts');
+const symbols=['💗','💕','❤️','💖','💞','🌸','🌷','💋'];
 
 function makeParticle(){
-  const el = document.createElement('span');
+  const el=document.createElement('span');
   el.className='particle';
-
-  el.textContent =
-    symbols[Math.floor(Math.random()*symbols.length)];
-
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
   el.style.left=Math.random()*100+'%';
   el.style.fontSize=(15+Math.random()*21)+'px';
 
@@ -557,18 +574,15 @@ function makeParticle(){
   el.style.animationDuration=duration+'s';
 
   particles.appendChild(el);
-
   setTimeout(()=>el.remove(),duration*1000);
 }
 
-// Floating hearts, flowers and kisses from start to finish.
 setInterval(makeParticle,320);
 
 for(let i=0;i<16;i++){
   setTimeout(makeParticle,i*160);
 }
 
-// A larger shower when YES is tapped.
 function showerFlowers(){
   for(let i=0;i<70;i++){
     setTimeout(makeParticle,i*55);
