@@ -1,369 +1,578 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SORRY HINODEE 💗</title>
+<title>Hi Hinodi 💗</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --pink:#ff80bd;
+  --light:#ffe4f2;
+  --deep:#270d2d;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-    background: linear-gradient(135deg, #170d24, #411a40, #812b57);
-    overflow-x: hidden;
+body{
+  min-height:100vh;
+  background:radial-gradient(ellipse at top,#692653 0%,#321333 48%,#150a20 100%);
+  color:#fff4fb;
+  font-family:Georgia,'Times New Roman',serif;
+  text-align:center;
+  overflow-x:hidden;
 }
 
-#floating {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
+#hearts{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
 }
 
-.float {
-    position: absolute;
-    bottom: -50px;
-    animation: floatUp linear forwards;
-    opacity: 0;
+.particle{
+  position:absolute;
+  bottom:-45px;
+  animation:rise linear forwards;
+  opacity:0;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(.7);
-        opacity: 0;
-    }
-    15% { opacity: .9; }
-    100% {
-        transform: translateY(-115vh) rotate(360deg) scale(1.3);
-        opacity: 0;
-    }
+@keyframes rise{
+  0%{transform:translateY(0) rotate(0) scale(.7);opacity:0}
+  12%{opacity:.9}
+  100%{transform:translateY(-115vh) rotate(320deg) scale(1.25);opacity:0}
 }
 
-main {
-    position: relative;
-    z-index: 1;
-    width: min(92%, 760px);
-    margin: auto;
-    padding: 35px 0 45px;
+main{
+  position:relative;
+  z-index:1;
+  width:min(92%,720px);
+  margin:auto;
+  padding:35px 0 55px;
 }
 
-h1 {
-    font-size: clamp(30px, 7vw, 48px);
-    color: #fff0f8;
-    text-shadow:
-        0 0 8px #ff71bb,
-        0 0 20px #ff3e9d,
-        0 0 40px #ff168b;
-    animation: glow 1.8s ease-in-out infinite alternate;
+.screen{display:none;animation:appear .75s ease}
+.screen.active{display:block}
+
+@keyframes appear{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes glow {
-    from {
-        text-shadow: 0 0 8px #ff71bb, 0 0 18px #ff3e9d;
-    }
-    to {
-        text-shadow: 0 0 15px white, 0 0 30px #ff168b,
-                     0 0 45px #ff168b;
-    }
+h1{
+  font-size:clamp(32px,8vw,54px);
+  color:#fff0f8;
+  text-shadow:0 0 8px #ff8bc9,0 0 22px #ff49a9,0 0 42px #ff49a9;
+  animation:glow 1.8s ease-in-out infinite alternate;
 }
 
-.subtitle {
-    margin: 15px 0 25px;
-    color: #ffd7ec;
-    font-size: 17px;
-    line-height: 1.7;
+@keyframes glow{
+  to{text-shadow:0 0 16px white,0 0 30px #ff49a9,0 0 55px #ff49a9}
 }
 
-.card {
-    background: rgba(255, 255, 255, .09);
-    border: 1px solid rgba(255, 190, 225, .3);
-    border-radius: 22px;
-    padding: 25px 20px;
-    margin: 20px 0;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, .2);
-    backdrop-filter: blur(8px);
+h2{
+  font-size:clamp(24px,6vw,32px);
+  color:#ffc3e5;
+  margin-bottom:18px;
 }
 
-h2 {
-    color: #ffc0e1;
-    margin-bottom: 17px;
-    font-size: 25px;
+p{line-height:1.9}
+
+.subtitle{
+  color:#ffd7ec;
+  line-height:1.8;
+  margin:18px 0;
 }
 
-p {
-    line-height: 1.9;
-    overflow-wrap: anywhere;
+.card{
+  margin:24px 0;
+  padding:25px 19px;
+  border-radius:25px;
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,180,222,.055));
+  border:1px solid rgba(255,202,231,.35);
+  box-shadow:0 12px 38px #08000b55,inset 0 0 22px #ffb8df0b;
+  backdrop-filter:blur(8px);
 }
 
-button {
-    border: none;
-    border-radius: 30px;
-    padding: 13px 22px;
-    margin: 7px;
-    background: linear-gradient(135deg, #ff80bd, #ff3f91);
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 18px rgba(255, 63, 145, .3);
-    transition: transform .2s;
+button{
+  border:1px solid #ffd2e9;
+  border-radius:40px;
+  padding:13px 24px;
+  margin:12px 5px;
+  color:white;
+  background:linear-gradient(135deg,#ff80bd,#e63b94);
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 18px #ff58aa44;
+  transition:transform .2s;
 }
 
-button:hover {
-    transform: scale(1.05);
+button:active{transform:scale(.96)}
+button:focus-visible{outline:3px solid white;outline-offset:3px}
+
+.small{font-size:14px;color:#ffdbed}
+
+/* Envelope */
+.envelope-area{
+  perspective:1000px;
+  margin:28px auto 20px;
+  width:min(100%,390px);
 }
 
-.page {
-    display: none;
-    animation: appear .65s ease;
+.envelope{
+  height:220px;
+  position:relative;
+  border-radius:7px;
+  background:#f8b8d8;
+  cursor:pointer;
+  box-shadow:0 10px 30px #08000b66;
+  overflow:visible;
 }
 
-.page.active {
-    display: block;
+.envelope::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(145deg,#ffd9ed,#e98cbf);
+  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+  z-index:3;
 }
 
-@keyframes appear {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+.flap{
+  position:absolute;
+  inset:0 0 auto;
+  height:62%;
+  background:#ffcee7;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform .9s ease;
+  z-index:4;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+.seal{
+  position:absolute;
+  top:42%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:57px;
+  height:57px;
+  border-radius:50%;
+  background:#c82e79;
+  border:2px solid #ffe3f2;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  z-index:5;
+  box-shadow:0 0 20px #e23c91;
 }
 
-.gallery img {
-    display: block;
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 192, 225, .65);
-    background: rgba(255,255,255,.08);
+.envelope.open .flap{
+  transform:rotateX(180deg);
+  z-index:0;
 }
 
-.gallery img:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    width: min(100%, 380px);
-    justify-self: center;
+.paper{
+  position:relative;
+  background:linear-gradient(#fff9fc,#ffedf6);
+  color:#723052;
+  border-radius:15px;
+  padding:24px 19px;
+  text-align:left;
+  box-shadow:0 8px 25px #0003;
+  display:none;
+  animation:paperIn .9s ease;
+  margin-top:16px;
 }
 
-.letter {
-    text-align: left;
-    white-space: pre-wrap;
-    font-size: 16px;
-    line-height: 2;
-    color: #fff0f7;
+.paper.show{display:block}
+
+@keyframes paperIn{
+  from{opacity:0;transform:translateY(35px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
 }
 
-.garden {
-    display: block;
-    margin-top: 22px;
-    font-weight: bold;
-    color: #ffcae6;
-    text-shadow: 0 0 10px #ff3e9d;
+.letter-text{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.9;
+  font-size:16px;
 }
 
-audio {
-    display: block;
-    width: 100%;
-    margin: 20px auto;
+/* Photos: show complete image without cropping */
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin:22px 0;
+  align-items:start;
 }
 
-footer {
-    color: #ffc7e4;
-    font-size: 13px;
-    margin-top: 25px;
+.photo{
+  min-width:0;
+  padding:8px;
+  border-radius:17px;
+  background:#fff0f8;
+  border:1px solid #ffc4e3;
+  box-shadow:0 5px 20px #0003;
 }
 
-@media (max-width: 420px) {
-    main { padding-top: 25px; }
-    .card { padding: 20px 14px; }
-    .gallery img { height: 170px; }
-    .letter { font-size: 15px; }
+.photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:430px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.memory-message{
+  color:#ffe4f3;
+  line-height:2;
+  margin:22px 0;
+  font-size:17px;
+}
+
+/* Glowing heart */
+.heart-button{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:8px;
+  font-size:100px;
+  line-height:1;
+  animation:beat 1s infinite;
+  filter:drop-shadow(0 0 12px #ff55b4);
+  cursor:pointer;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.15)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.1)}
+}
+
+.magic-letter{
+  display:none;
+  text-align:left;
+  margin-top:25px;
+  padding:24px 20px;
+  color:#763052;
+  background:linear-gradient(145deg,#fff9fc,#ffd9ed);
+  border-radius:18px;
+  box-shadow:0 0 28px #ff8fc9aa;
+}
+
+.magic-letter.show{display:block;animation:paperIn .9s ease}
+.magic-letter p{white-space:pre-wrap;line-height:2}
+
+/* Forgiveness buttons */
+.buttons{
+  position:relative;
+  min-height:100px;
+  margin-top:15px;
+}
+
+#noBtn{position:relative;transition:left .18s,top .18s}
+
+/* Final photo: cheek-kiss photo is photo3.png */
+.final-photo{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:18px;
+  border:2px solid #ffc5e4;
+  background:#fff0f8;
+  box-shadow:0 0 28px #ff75ba77;
+  margin:20px auto;
+}
+
+.final-message{
+  font-size:clamp(25px,6vw,36px);
+  color:#ffe2f2;
+  text-shadow:0 0 15px #ff45a6;
+  line-height:1.7;
+}
+
+footer{
+  margin-top:25px;
+  color:#ffc5e4;
+  font-size:13px;
+}
+
+@media(max-width:450px){
+  main{padding-top:25px}
+  .card{padding:21px 13px}
+  .gallery{gap:8px}
+  .photo{padding:5px}
+  .photo img{max-height:390px}
+  .letter-text,.magic-letter p{font-size:15px}
+  .envelope{height:190px}
 }
 </style>
 </head>
 
 <body>
 
-<div id="floating"></div>
+<div id="hearts"></div>
+
+<!-- Music starts from the beginning after the first Continue tap -->
+<audio id="song" loop preload="auto">
+  <source src="song.m4a" type="audio/mp4">
+</audio>
 
 <main>
-    <h1>SORRY HINODEE 💋💗</h1>
+
+  <!-- SCREEN 1: OPENING -->
+  <section class="screen active" id="start">
+    <h1>Hi Hinodi 💗</h1>
+
+    <div class="card">
+      <p style="font-size:22px;line-height:1.9">
+        I am extremly sorry for what i did…<br>
+        Pls forgive me. 🥺💞
+      </p>
+
+      <p class="subtitle">
+        This little page is from my heart, just for you. 🌷
+      </p>
+
+      <button onclick="begin()">Continue 💌</button>
+      <p class="small">A little something I made for you 💗</p>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: OPENING ENVELOPE -->
+  <section class="screen" id="letterScreen">
+    <h2>A letter, just for you 💌</h2>
+    <p class="subtitle">Tap the envelope to open it…</p>
+
+    <div class="envelope-area">
+      <div class="envelope" id="envelope" onclick="openLetter()">
+        <div class="flap"></div>
+        <div class="seal">💗</div>
+      </div>
+    </div>
+
+    <div class="paper" id="firstLetter">
+      <h2 style="text-align:center;color:#c43c81">My apology 💌</h2>
+
+      <div class="letter-text">I am sorry hino...i did hurtt u a lot..i should havee supportedd you yesterday..but it was never my intention to hurt u baby...i was not talking to anyonee sincee that dayy i textedd u in dc...i havee myy own problemss at home..which i don't likee to discuss...that's whyy i leftt for some time...but couldn't love without u all..i knoww u have many problemss in yourr life..but please don't say that i left you...causee i never did and never will...and i am sorry for yesterday's behavior i should had acted mature..and should have looked after u....i am really sorry for that...i won't do it ever again..pls trust me..i knoww it's difficult to..but please...plss tell me abt bhawani di also i am really unawaree of it..plss give mee a last chancee..i am not acting please i do caree for u a lot baby...love you so much...and if there is smth else i did plss let me know...i won't repeat my mistake..</div>
+
+      <p style="text-align:center;font-weight:bold;margin-top:20px">
+        With love 💗
+      </p>
+
+      <div style="text-align:center">
+        <button onclick="showScreen('memories')">Continue 🌸</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: MEMORIES -->
+  <section class="screen" id="memories">
+    <h2>Our memories 🌷💗</h2>
+
     <p class="subtitle">
-        For someone who means so much to me... 🥺💕
+      I hope we get to make so many more together.
     </p>
 
-    <!-- PAGE 1: WELCOME -->
-    <section class="page active" id="welcome">
-        <div class="card">
-            <h2>Hey Hinooo 🥺💗</h2>
-            <p>
-                I made something for you from my heart.
-                Please open it till the end. 💌
-            </p>
-            <p style="font-size:30px; margin-top:18px;">
-                🫂 💋 💗 🌷
-            </p>
-            <button onclick="showPage('photos')">
-                Open for you 💗
-            </button>
-        </div>
-    </section>
+    <!-- The cheek-kiss photo, photo3.png, is deliberately excluded here -->
+    <div class="gallery">
+      <div class="photo">
+        <img src="photo1.png" alt="Memory one">
+      </div>
+      <div class="photo">
+        <img src="photo2.png" alt="Memory two">
+      </div>
+      <div class="photo">
+        <img src="photo4.png" alt="Memory four">
+      </div>
+      <div class="photo">
+        <img src="photo5.png" alt="Memory five">
+      </div>
+    </div>
 
-    <!-- PAGE 2: YOUR FIVE PHOTOS -->
-    <section class="page" id="photos">
-        <div class="card">
-            <h2>Our Little Memories 📸💞</h2>
-            <p class="subtitle">
-                A little collection, just for you. 🌸
-            </p>
+    <div class="card">
+      <p class="memory-message">I thought that when wee will grow up we will meet andd makee fun memories like this..but u are saying that u will leavee me...pleasee don't do that..hino i love you so much..pleasee🫠🫠💞</p>
 
-            <div class="gallery">
-                <img src="photo1.png" alt="Memory 1">
-                <img src="photo2.png" alt="Memory 2">
-                <img src="photo3.png" alt="Memory 3">
-                <img src="photo4.png" alt="Memory 4">
-                <img src="photo5.png" alt="Memory 5">
-            </div>
+      <button onclick="showScreen('heartScreen')">
+        Continue 💗
+      </button>
+    </div>
+  </section>
 
-            <button onclick="showPage('letter')">
-                Read my letter 💌
-            </button>
-        </div>
-    </section>
+  <!-- SCREEN 4: BEATING HEART AND MAGICAL LETTER -->
+  <section class="screen" id="heartScreen">
+    <h2>A little piece of my heart 💗</h2>
+    <p class="subtitle">Tap the glowing heart…</p>
 
-    <!-- PAGE 3: ORIGINAL APOLOGY LETTER -->
-    <section class="page" id="letter">
-        <div class="card">
-            <h2>My Letter To You 💌</h2>
+    <button class="heart-button"
+      aria-label="Open the second letter"
+      onclick="openMagicLetter()">💗</button>
 
-            <div class="letter">I am sorry hino...i did hurtt u a lot..i should havee supportedd you yesterday..but it was never my intention to hurt u baby...i was not talking to anyonee sincee that dayy i textedd u in dc...i havee myy own problemss at home..which i don't likee to discuss...that's whyy i leftt for some time...but couldn't love without u all..i knoww u have many problemss in yourr life..but please don't say that i left you...causee i never did and never will...and i am sorry for yesterday's behavior i should had acted mature..and should have looked after u....i am really sorry for that...i won't do it ever again..pls trust me..i knoww it's difficult to..but please...plss tell me abt bhawani di also i am really unawaree of it..plss give mee a last chancee..i am not acting please i do caree for u a lot baby...love you so much...and if there is smth else i did plss let me know...i won't repeat my mistake..</div>
+    <div class="magic-letter" id="magicLetter">
+      <h2 style="text-align:center">
+        Please listen to my heart… ✨
+      </h2>
 
-            <span class="garden">At lastt......
+      <p>hino i know you are reallyy hurt but trustt me i never fakee my friendship..i can just stop u ask u to be with me..but at last i would say that itss your life..if you are happy without me..then i am also fine with it..if it makess u happy nothing matters to me more than that again i am not acting babyy i reallyy do love you..😞❤️</p>
 
-What i am supposed to do with the whole garden when my favourite flower is not there?🙃</span>
+      <div style="text-align:center;margin-top:20px">
+        <button onclick="showScreen('forgive')">
+          Continue 🥺💞
+        </button>
+      </div>
+    </div>
+  </section>
 
-            <button onclick="showPage('song')">
-                One more thing 🎵
-            </button>
-        </div>
-    </section>
+  <!-- SCREEN 5: DID YOU FORGIVE ME? -->
+  <section class="screen" id="forgive">
+    <h2>Did you forgive me? 🥺💗</h2>
 
-    <!-- PAGE 4: SONG -->
-    <section class="page" id="song">
-        <div class="card">
-            <h2>A Song For You 🎶💗</h2>
-            <p>
-                Listen whenever you want. 🌷
-            </p>
+    <div class="card">
+      <p class="subtitle">Please choose one, Hinodi… 💌</p>
 
-            <audio controls preload="metadata">
-                <source src="song.m4a" type="audio/mp4">
-                Your browser does not support this audio.
-            </audio>
+      <div class="buttons" id="answerArea">
+        <button onclick="sayYes()">YES 💗</button>
+        <button id="noBtn" onclick="moveNo()">NO 🙈</button>
+      </div>
+    </div>
+  </section>
 
-            <p class="subtitle">
-                Let this song say what my heart feels. 💕
-            </p>
+  <!-- SCREEN 6: FINAL YES SURPRISE -->
+  <section class="screen" id="ending">
+    <h1>THANKYOU BABYYY 💗</h1>
 
-            <button onclick="showPage('final')">
-                One last thing, Hino 💋
-            </button>
-        </div>
-    </section>
+    <div class="card">
+      <p class="final-message">Love u babyy 💋💞</p>
 
-    <!-- PAGE 5: FINAL MESSAGE -->
-    <section class="page" id="final">
-        <div class="card">
-            <h2>One Last Hug? 🫂💗</h2>
+      <p class="subtitle">
+        Thankyou for giving me another chance. ❤️
+      </p>
 
-            <p>
-                🥺💗💋🌸💞
-            </p>
+      <!-- Correct cheek-kiss image: photo3.png -->
+      <img class="final-photo"
+        src="photo3.png"
+        alt="Our cheek kiss picture">
 
-            <p style="margin-top:18px;">
-                I hope we can understand each other and
-                talk things through. You matter to me,
-                and I am truly sorry for hurting you.
-            </p>
+      <p class="final-message">
+        I won't repeat my mistake. 💗🌸
+      </p>
 
-            <p style="font-size:25px; margin-top:22px;">
-                Sending you love and kisses 💋💋💗
-            </p>
+      <p style="font-size:30px;margin-top:15px">
+        🌸 💗 🌷 💋 💖 🌸
+      </p>
+    </div>
+  </section>
 
-            <p style="margin-top:22px; font-weight:bold; color:#ffc0e1;">
-                Made with love, just for you. 💌
-            </p>
-
-            <button onclick="showPage('welcome')">
-                Start again 💗
-            </button>
-        </div>
-    </section>
-
-    <footer>💗 A little page made with love 💗</footer>
+  <footer>Made with love 💗</footer>
 </main>
 
 <script>
-function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(function(page) {
-        page.classList.remove('active');
-    });
+const song = document.getElementById('song');
 
-    document.getElementById(pageId).classList.add('active');
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(screen=>{
+    screen.classList.remove('active');
+  });
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+  document.getElementById(id).classList.add('active');
 
-    if (pageId === 'final') {
-        celebration();
-    }
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Floating hearts and kisses
-const floating = document.getElementById('floating');
-const decorations = ['💗', '💕', '💋', '❤️', '🌸', '💖', '😘'];
+function begin(){
+  // Restart from the very beginning on the first user tap.
+  song.currentTime = 0;
 
-function makeFloat() {
-    const item = document.createElement('span');
-    item.className = 'float';
-    item.textContent =
-        decorations[Math.floor(Math.random() * decorations.length)];
+  song.play().catch(()=>{
+    // If the browser blocks playback, expose the audio controls.
+    song.controls = true;
+  });
 
-    item.style.left = Math.random() * 100 + '%';
-    item.style.fontSize = (16 + Math.random() * 20) + 'px';
-
-    const duration = 5 + Math.random() * 6;
-    item.style.animationDuration = duration + 's';
-
-    floating.appendChild(item);
-
-    setTimeout(function() {
-        item.remove();
-    }, duration * 1000);
+  showScreen('letterScreen');
 }
 
-setInterval(makeFloat, 350);
+function openLetter(){
+  const envelope = document.getElementById('envelope');
+  const paper = document.getElementById('firstLetter');
 
-// Extra hearts when the final page opens
-function celebration() {
-    for (let i = 0; i < 35; i++) {
-        setTimeout(makeFloat, i * 100);
-    }
+  if(paper.classList.contains('show')) return;
+
+  envelope.classList.add('open');
+
+  setTimeout(()=>{
+    paper.classList.add('show');
+    paper.scrollIntoView({behavior:'smooth',block:'center'});
+  },650);
+}
+
+function openMagicLetter(){
+  const letter = document.getElementById('magicLetter');
+  letter.classList.add('show');
+
+  letter.scrollIntoView({
+    behavior:'smooth',
+    block:'center'
+  });
+}
+
+function moveNo(){
+  const btn = document.getElementById('noBtn');
+  const area = document.getElementById('answerArea');
+
+  const maxX = Math.max(0,area.clientWidth-btn.offsetWidth);
+  const maxY = 45;
+
+  btn.style.position='absolute';
+  btn.style.left=Math.random()*maxX+'px';
+  btn.style.top=Math.random()*maxY+'px';
+}
+
+function sayYes(){
+  showScreen('ending');
+  showerFlowers();
+}
+
+const particles = document.getElementById('hearts');
+const symbols = ['💗','💕','❤️','💖','💞','🌸','🌷','💋'];
+
+function makeParticle(){
+  const el = document.createElement('span');
+  el.className='particle';
+
+  el.textContent =
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+  el.style.left=Math.random()*100+'%';
+  el.style.fontSize=(15+Math.random()*21)+'px';
+
+  const duration=5+Math.random()*6;
+  el.style.animationDuration=duration+'s';
+
+  particles.appendChild(el);
+
+  setTimeout(()=>el.remove(),duration*1000);
+}
+
+// Floating hearts, flowers and kisses from start to finish.
+setInterval(makeParticle,320);
+
+for(let i=0;i<16;i++){
+  setTimeout(makeParticle,i*160);
+}
+
+// A larger shower when YES is tapped.
+function showerFlowers(){
+  for(let i=0;i<70;i++){
+    setTimeout(makeParticle,i*55);
+  }
 }
 </script>
 
