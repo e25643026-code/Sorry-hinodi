@@ -3,396 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry, Hinodee 💗</title>
+<title>SORRY HINODEE 💗</title>
 
 <style>
-:root {
-  --pink: #ff5c9a;
-  --deep: #a92760;
-  --light: #fff0f6;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-* { box-sizing: border-box; }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Trebuchet MS", sans-serif;
-  color: #71304c;
-  background: linear-gradient(135deg,#ffe2ed,#fff6fa,#ffd1e4);
-  overflow-x: hidden;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #170d24, #411a40, #812b57);
+    overflow-x: hidden;
 }
-button, input { font: inherit; }
-button {
-  border: 0;
-  padding: 13px 22px;
-  border-radius: 30px;
-  color: white;
-  background: linear-gradient(135deg,#ff79ab,#df347b);
-  box-shadow: 0 7px 18px #d83d7c35;
-  cursor: pointer;
-  transition: .25s;
-  margin: 7px;
-}
-button:hover { transform: translateY(-2px) scale(1.02); }
-button:active { transform: scale(.97); }
 
-.page {
-  display: none;
-  min-height: 100vh;
-  padding: 35px 16px 55px;
-  text-align: center;
-  position: relative;
-  animation: appear .65s ease;
+#floating {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
 }
-.page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.float {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear forwards;
+    opacity: 0;
 }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: 0;
+    }
+    15% { opacity: .9; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    width: min(92%, 760px);
+    margin: auto;
+    padding: 35px 0 45px;
+}
+
 h1 {
-  font-size: clamp(2.1rem,8vw,3.8rem);
-  color: var(--deep);
-  margin: 12px 0;
-  text-shadow: 0 0 18px #ff8ab855;
+    font-size: clamp(30px, 7vw, 48px);
+    color: #fff0f8;
+    text-shadow:
+        0 0 8px #ff71bb,
+        0 0 20px #ff3e9d,
+        0 0 40px #ff168b;
+    animation: glow 1.8s ease-in-out infinite alternate;
 }
-h2 { color: #c33d79; }
-p { line-height: 1.8; }
-.subtitle { font-size: 1.1rem; max-width: 480px; }
-.emoji { font-size: 3rem; animation: bounce 2s infinite; }
-@keyframes bounce { 50% { transform: translateY(-8px); } }
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 8px #ff71bb, 0 0 18px #ff3e9d;
+    }
+    to {
+        text-shadow: 0 0 15px white, 0 0 30px #ff168b,
+                     0 0 45px #ff168b;
+    }
+}
+
+.subtitle {
+    margin: 15px 0 25px;
+    color: #ffd7ec;
+    font-size: 17px;
+    line-height: 1.7;
+}
 
 .card {
-  width: min(100%, 650px);
-  background: #ffffffcf;
-  border: 1px solid #ffffff;
-  border-radius: 25px;
-  padding: 23px;
-  margin: 17px auto;
-  box-shadow: 0 12px 40px #bc477b20;
-  backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, .09);
+    border: 1px solid rgba(255, 190, 225, .3);
+    border-radius: 22px;
+    padding: 25px 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(8px);
 }
-.small { font-size: .88rem; opacity: .8; }
 
-.uploads {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 15px 0;
+h2 {
+    color: #ffc0e1;
+    margin-bottom: 17px;
+    font-size: 25px;
 }
-.upload-label {
-  display: inline-block;
-  padding: 12px 17px;
-  border: 1px dashed #e45c94;
-  border-radius: 18px;
-  background: #fff2f8;
-  cursor: pointer;
-  font-size: .9rem;
-}
-input[type=file] { display: none; }
 
-.photos {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
-  margin-top: 18px;
+p {
+    line-height: 1.9;
+    overflow-wrap: anywhere;
 }
-.photo-frame {
-  min-height: 130px;
-  overflow: hidden;
-  border-radius: 17px;
-  background: #ffe0ec;
-  border: 3px solid white;
-  box-shadow: 0 4px 15px #a9276020;
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 22px;
+    margin: 7px;
+    background: linear-gradient(135deg, #ff80bd, #ff3f91);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(255, 63, 145, .3);
+    transition: transform .2s;
 }
-.photo-frame img {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+
+button:hover {
+    transform: scale(1.05);
 }
-.photo-placeholder {
-  height: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  font-size: .9rem;
+
+.page {
+    display: none;
+    animation: appear .65s ease;
 }
-.photo-placeholder span { font-size: 2rem; }
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.gallery img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 192, 225, .65);
+    background: rgba(255,255,255,.08);
+}
+
+.gallery img:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(100%, 380px);
+    justify-self: center;
+}
 
 .letter {
-  text-align: left;
-  white-space: pre-line;
-  line-height: 2;
-  font-size: 1.03rem;
+    text-align: left;
+    white-space: pre-wrap;
+    font-size: 16px;
+    line-height: 2;
+    color: #fff0f7;
 }
-.letter-heading {
-  text-align: center;
-  font-size: clamp(2rem,8vw,3.3rem);
-  color: #e12e7a;
-  text-shadow: 0 0 8px #ff91bd, 0 0 24px #ffb3d0;
-  animation: glow 2s infinite alternate;
+
+.garden {
+    display: block;
+    margin-top: 22px;
+    font-weight: bold;
+    color: #ffcae6;
+    text-shadow: 0 0 10px #ff3e9d;
 }
-@keyframes glow {
-  from { text-shadow: 0 0 8px #ff91bd; }
-  to { text-shadow: 0 0 18px #ff6da8, 0 0 35px #ffa5ca; }
+
+audio {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
 }
-audio { width: 100%; margin: 15px 0; }
-#musicStatus { overflow-wrap: anywhere; }
-.heart {
-  position: fixed;
-  top: -40px;
-  z-index: 10;
-  pointer-events: none;
-  animation: fall linear forwards;
+
+footer {
+    color: #ffc7e4;
+    font-size: 13px;
+    margin-top: 25px;
 }
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-.footer { margin-top: 22px; font-size: .8rem; opacity: .7; }
-.final-heart { font-size: 4rem; animation: heartbeat 1s infinite; }
-@keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
+
+@media (max-width: 420px) {
+    main { padding-top: 25px; }
+    .card { padding: 20px 14px; }
+    .gallery img { height: 170px; }
+    .letter { font-size: 15px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1: WELCOME -->
-<section class="page active" id="welcome">
-  <div class="emoji">🥺💗</div>
-  <h1>Hey, Hinodee...</h1>
-  <p class="subtitle">
-    I made something for you, my girl.<br>
-    Please give me a little moment to say what's in my heart. 🫂
-  </p>
-  <button onclick="goTo('memories')">Open my little surprise 💌</button>
-  <p class="small">Made with love, just for you 🌷</p>
-</section>
+<div id="floating"></div>
 
-<!-- PAGE 2: PHOTOS -->
-<section class="page" id="memories">
-  <h1>Our Little Memories 📸</h1>
-  <p class="subtitle">Some moments, some laughs, and a friendship that means so much to me. 💕</p>
-
-  <div class="card">
-    <h2>Our photo album 🌸</h2>
-    <p class="small">Tap below to add your pictures. They will appear here instantly.</p>
-
-    <label class="upload-label">
-      💗 Choose our photos
-      <input type="file" id="photoPicker" accept="image/*" multiple>
-    </label>
-
-    <div class="photos" id="photoGallery">
-      <div class="photo-frame"><div class="photo-placeholder"><span>📷</span>Our memory</div></div>
-      <div class="photo-frame"><div class="photo-placeholder"><span>🫶</span>Our friendship</div></div>
-    </div>
-
-    <p class="small">Choose multiple photos at once if you want!</p>
-  </div>
-
-  <button onclick="goTo('letter')">There's something I need to tell you 💌</button>
-  <button onclick="goTo('welcome')">← Back</button>
-</section>
-
-<!-- PAGE 3: APOLOGY LETTER -->
-<section class="page" id="letter">
-  <div class="emoji">💌</div>
-  <h1 class="letter-heading">I'm Sorry, Hino...</h1>
-
-  <div class="card letter">
-Dear Hino, my girl... 🥺💗
-
-I am sorry, Hino... I did hurt you a lot, and I should never have made you feel that way. I know that my actions and words may have hurt you more than I realised, and I am genuinely sorry.
-
-If I could go back and change the moments when I hurt you, I would. I can't undo what happened, but I can be honest about my mistakes and try to become a better friend to you.
-
-You are not just any friend to me. You are someone who has a special place in my heart. Our silly talks, our laughs, our little moments, and all the memories we made mean so much to me. I never wanted to become the reason behind your tears.
-
-I know that a simple "sorry" cannot magically fix everything. I don't expect you to forget what happened just because I wrote this letter. Your feelings matter, and you deserve time, understanding, and genuine effort.
-
-I am sorry for the times I didn't understand you, for the times I could have listened better, and for the moments when I made you feel less important than you are.
-
-I want to do better, Hino. Not just with words, but through my actions too. I want to learn from my mistakes instead of repeating them.
-
-You deserve a friendship that feels safe, happy, and real. You deserve to be heard, respected, appreciated, and loved.
-
-I miss the happiness between us. I miss the comfort of knowing that we could laugh about the most random things. And I hope that, whenever you're ready, we can slowly find our way back to that happiness.
-
-I can't demand forgiveness from you. I can only tell you that I am truly sorry and that our friendship matters deeply to me.
-
-Thank you for being a part of my life, Hino. Thank you for the memories that I will always cherish.
-
-No matter what, I genuinely wish happiness for you. You deserve so many beautiful things in this world.
-
-I'm sorry, my girl. From the bottom of my heart. ❤️
-
-Whenever you're ready, I hope we can talk. I'll respect your feelings and your time.
-
-Love you so much, Hino. 🫂🌷❤️
-  </div>
-
-  <button onclick="goTo('song')">I have one more thing for you 🎶</button>
-  <button onclick="goTo('memories')">← Our memories</button>
-</section>
-
-<!-- PAGE 4: SONG -->
-<section class="page" id="song">
-  <div class="emoji">🎶🌷</div>
-  <h1>A Little Song for You</h1>
-  <p class="subtitle">Some feelings are easier to share through music. 💗</p>
-
-  <div class="card">
-    <h2>Our little soundtrack 🎧</h2>
-    <p>Select a song from your phone to play it here.</p>
-
-    <label class="upload-label">
-      🎵 Choose your song
-      <input type="file" id="songPicker" accept="audio/*">
-    </label>
-
-    <p id="musicStatus" class="small">No song selected yet 💕</p>
-    <audio id="musicPlayer" controls></audio>
-
-    <p class="small">The song starts when you press play.</p>
-  </div>
-
-  <button onclick="goTo('final')">One last message... 💗</button>
-  <button onclick="goTo('letter')">← Read my letter again</button>
-</section>
-
-<!-- PAGE 5: FINAL MESSAGE -->
-<section class="page" id="final">
-  <div class="final-heart">❤️</div>
-  <h1>For You, Hino</h1>
-
-  <div class="card">
-    <p>
-      I know things can't always be fixed in a single day.
-      I just wanted to make something that shows you how sorry I am.
+<main>
+    <h1>SORRY HINODEE 💋💗</h1>
+    <p class="subtitle">
+        For someone who means so much to me... 🥺💕
     </p>
-    <p>
-      You don't have to reply immediately, and you don't have to hide how you feel.
-      I'll respect your space and your feelings. 🫂
-    </p>
-    <p>
-      I hope someday we can smile together again without any heaviness in our hearts.
-    </p>
-    <h2>I'm truly sorry, my girl. 🌷</h2>
-    <p>Sending you the biggest virtual hug everrrrr! 🫂💗</p>
-    <button onclick="sendHearts()">A hug for you 🫶</button>
-    <p id="hugMessage"></p>
-  </div>
 
-  <button onclick="goTo('welcome')">Start our little story again ↻</button>
-  <p class="footer">Made with love, for Hinodee 💗</p>
-</section>
+    <!-- PAGE 1: WELCOME -->
+    <section class="page active" id="welcome">
+        <div class="card">
+            <h2>Hey Hinooo 🥺💗</h2>
+            <p>
+                I made something for you from my heart.
+                Please open it till the end. 💌
+            </p>
+            <p style="font-size:30px; margin-top:18px;">
+                🫂 💋 💗 🌷
+            </p>
+            <button onclick="showPage('photos')">
+                Open for you 💗
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 2: YOUR FIVE PHOTOS -->
+    <section class="page" id="photos">
+        <div class="card">
+            <h2>Our Little Memories 📸💞</h2>
+            <p class="subtitle">
+                A little collection, just for you. 🌸
+            </p>
+
+            <div class="gallery">
+                <img src="photo1.png" alt="Memory 1">
+                <img src="photo2.png" alt="Memory 2">
+                <img src="photo3.png" alt="Memory 3">
+                <img src="photo4.png" alt="Memory 4">
+                <img src="photo5.png" alt="Memory 5">
+            </div>
+
+            <button onclick="showPage('letter')">
+                Read my letter 💌
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 3: ORIGINAL APOLOGY LETTER -->
+    <section class="page" id="letter">
+        <div class="card">
+            <h2>My Letter To You 💌</h2>
+
+            <div class="letter">I am sorry hino...i did hurtt u a lot..i should havee supportedd you yesterday..but it was never my intention to hurt u baby...i was not talking to anyonee sincee that dayy i textedd u in dc...i havee myy own problemss at home..which i don't likee to discuss...that's whyy i leftt for some time...but couldn't love without u all..i knoww u have many problemss in yourr life..but please don't say that i left you...causee i never did and never will...and i am sorry for yesterday's behavior i should had acted mature..and should have looked after u....i am really sorry for that...i won't do it ever again..pls trust me..i knoww it's difficult to..but please...plss tell me abt bhawani di also i am really unawaree of it..plss give mee a last chancee..i am not acting please i do caree for u a lot baby...love you so much...and if there is smth else i did plss let me know...i won't repeat my mistake..</div>
+
+            <span class="garden">At lastt......
+
+What i am supposed to do with the whole garden when my favourite flower is not there?🙃</span>
+
+            <button onclick="showPage('song')">
+                One more thing 🎵
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 4: SONG -->
+    <section class="page" id="song">
+        <div class="card">
+            <h2>A Song For You 🎶💗</h2>
+            <p>
+                Listen whenever you want. 🌷
+            </p>
+
+            <audio controls preload="metadata">
+                <source src="song.m4a" type="audio/mp4">
+                Your browser does not support this audio.
+            </audio>
+
+            <p class="subtitle">
+                Let this song say what my heart feels. 💕
+            </p>
+
+            <button onclick="showPage('final')">
+                One last thing, Hino 💋
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 5: FINAL MESSAGE -->
+    <section class="page" id="final">
+        <div class="card">
+            <h2>One Last Hug? 🫂💗</h2>
+
+            <p>
+                🥺💗💋🌸💞
+            </p>
+
+            <p style="margin-top:18px;">
+                I hope we can understand each other and
+                talk things through. You matter to me,
+                and I am truly sorry for hurting you.
+            </p>
+
+            <p style="font-size:25px; margin-top:22px;">
+                Sending you love and kisses 💋💋💗
+            </p>
+
+            <p style="margin-top:22px; font-weight:bold; color:#ffc0e1;">
+                Made with love, just for you. 💌
+            </p>
+
+            <button onclick="showPage('welcome')">
+                Start again 💗
+            </button>
+        </div>
+    </section>
+
+    <footer>💗 A little page made with love 💗</footer>
+</main>
 
 <script>
-function goTo(id) {
-  document.querySelectorAll('.page').forEach(page => {
-    page.classList.remove('active');
-  });
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
 
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById(pageId).classList.add('active');
 
-  if (id === 'final') {
-    burstHearts(12);
-  }
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    if (pageId === 'final') {
+        celebration();
+    }
 }
 
-const photoPicker = document.getElementById('photoPicker');
-const gallery = document.getElementById('photoGallery');
-const photoURLs = [];
+// Floating hearts and kisses
+const floating = document.getElementById('floating');
+const decorations = ['💗', '💕', '💋', '❤️', '🌸', '💖', '😘'];
 
-photoPicker.addEventListener('change', function () {
-  const files = Array.from(this.files || []);
-  if (!files.length) return;
+function makeFloat() {
+    const item = document.createElement('span');
+    item.className = 'float';
+    item.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
 
-  files.forEach(file => {
-    if (!file.type.startsWith('image/')) return;
+    item.style.left = Math.random() * 100 + '%';
+    item.style.fontSize = (16 + Math.random() * 20) + 'px';
 
-    const url = URL.createObjectURL(file);
-    photoURLs.push(url);
+    const duration = 5 + Math.random() * 6;
+    item.style.animationDuration = duration + 's';
 
-    const frame = document.createElement('div');
-    frame.className = 'photo-frame';
+    floating.appendChild(item);
 
-    const img = document.createElement('img');
-    img.src = url;
-    img.alt = 'Our special memory';
-
-    frame.appendChild(img);
-    gallery.appendChild(frame);
-  });
-
-  this.value = '';
-});
-
-const songPicker = document.getElementById('songPicker');
-const player = document.getElementById('musicPlayer');
-const musicStatus = document.getElementById('musicStatus');
-let currentSongURL = null;
-
-songPicker.addEventListener('change', function () {
-  const file = this.files && this.files[0];
-  if (!file) return;
-
-  if (currentSongURL) URL.revokeObjectURL(currentSongURL);
-
-  currentSongURL = URL.createObjectURL(file);
-  player.src = currentSongURL;
-  player.load();
-  musicStatus.textContent = 'Your song: ' + file.name + ' 💗';
-
-  this.value = '';
-});
-
-function burstHearts(amount = 24) {
-  const symbols = ['💗','💕','💖','🌸','❤️','🩷','✨'];
-
-  for (let i = 0; i < amount; i++) {
-    const heart = document.createElement('span');
-    heart.className = 'heart';
-    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-    heart.style.fontSize = (18 + Math.random() * 22) + 'px';
-    heart.style.animationDelay = (Math.random() * 1.5) + 's';
-
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 9000);
-  }
+    setTimeout(function() {
+        item.remove();
+    }, duration * 1000);
 }
 
-function sendHearts() {
-  burstHearts(45);
-  document.getElementById('hugMessage').textContent =
-    'A million hugs and all my love to you, Hino! 🫂💗🌷';
+setInterval(makeFloat, 350);
+
+// Extra hearts when the final page opens
+function celebration() {
+    for (let i = 0; i < 35; i++) {
+        setTimeout(makeFloat, i * 100);
+    }
 }
-
-setInterval(() => {
-  if (document.visibilityState === 'visible') {
-    const heart = document.createElement('span');
-    heart.className = 'heart';
-    heart.textContent = ['💗','💕','🌸','✨'][Math.floor(Math.random() * 4)];
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (5 + Math.random() * 4) + 's';
-    heart.style.fontSize = (14 + Math.random() * 13) + 'px';
-
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 10000);
-  }
-}, 1100);
 </script>
 
 </body>
 </html>
-
